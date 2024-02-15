@@ -1,1 +1,6 @@
+Explain why it is not safe for a server receiving form data to trust the data, even if JavaScript was used to validate the data.?
+The client-side validation is running on the client's web browser. An attacker can easily manipulate and bypass the client's side validation.
+So the server cannot accept the javascript validation on the client's side. The validation does not ensure data integrity and security.
+An attacker can also submit malicious data. The users without the javascript enabled may create accessibility issues and may provide an inadequate user experience.
+So server-side validation is essential to ensure data integrity, security, and consistency.
 
