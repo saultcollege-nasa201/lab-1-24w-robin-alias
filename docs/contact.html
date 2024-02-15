@@ -51,15 +51,21 @@
         var errorMessages = document.getElementById('errorMessages');
         var isValid = true;
         errorMessages.innerHTML = '';
+        var specialChars = /^[a-zA-Z0-9]*$/;
         if (name === '') {
             displayErrorMessage('Name is required.');
             isValid = false;
         } else if (/\d/.test(name)) {
             displayErrorMessage('Name cannot contain numbers.');
             isValid = false;
-        }
+        }else if (!specialChars.test(name)) {
+            displayErrorMessage('Name cannot contain special characters.');
+            isValid = false;}
         if (message === '') {
             displayErrorMessage('Message is required.');
+            isValid = false;
+        }if (email === '') {
+            displayErrorMessage('Email is required.');
             isValid = false;
         }
         if (isValid) {
