@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .error {
+            border: 1px solid red;
+        }
+        .error-message {
+            color: red;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -13,14 +21,13 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="styles.css"><Style></Style></a></li>
             </ul>
         </nav>
     </header>
     <main>
         <section>
             <h2>Contact Form</h2>
-            <form action="mailto:23052990@saultcollege.ca" method="post" enctype="text/plain">
+            <form id="contactForm" action="mailto:23052990@saultcollege.ca" method="post" enctype="text/plain">
                 <label for="name">Name:</label><br>
                 <input type="text" id="name" name="name"><br>
                 <label for="email">Email:</label><br>
@@ -29,10 +36,40 @@
                 <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
                 <input type="submit" value="Submit">
             </form>
+            <div id="errorMessages" class="error-message"></div>
         </section>
     </main>
     <footer>
         <p>&copy; 2024 Robin Alias (23052990). All rights reserved.</p>
     </footer>
-</body>
-</html>
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var name = document.getElementById('name').value.trim();
+        var email = document.getElementById('email').value.trim();
+        var message = document.getElementById('message').value.trim();
+        var errorMessages = document.getElementById('errorMessages');
+        var isValid = true;
+        errorMessages.innerHTML = '';
+        if (name === '') {
+            displayErrorMessage('Name is required.');
+            isValid = false;
+        } else if (/\d/.test(name)) {
+            displayErrorMessage('Name cannot contain numbers.');
+            isValid = false;
+        }
+        if (message === '') {
+            displayErrorMessage('Message is required.');
+            isValid = false;
+        }
+        if (isValid) {
+            event.target.submit();
+        }
+    });
+    function displayErrorMessage(message) {
+        var errorMessages = document.getElementById('errorMessages');
+        var errorMessageNode = document.createElement('p');
+        errorMessageNode.textContent = message;
+        errorMessages.appendChild(errorMessageNode);
+    }
+</script>
