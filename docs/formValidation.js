@@ -1,10 +1,18 @@
 document.getElementById('contactForm').addEventListener('submit', function(event) {
+    // Prevent the form from submitting
     event.preventDefault();
+
+    // Reset previous error messages and styles
     resetErrors();
+
+    // Get form values
     var name = document.getElementById('name').value.trim();
     var email = document.getElementById('email').value.trim();
     var message = document.getElementById('message').value.trim();
+
+    // Perform validation
     var isValid = true;
+
     if (name === '') {
         isValid = false;
         document.getElementById('nameError').innerText = 'Name cannot be empty';
@@ -14,20 +22,26 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         document.getElementById('nameError').innerText = 'Name should only contain alphabets and spaces';
         document.getElementById('name').classList.add('error');
     }
+
     if (email === '') {
         isValid = false;
         document.getElementById('emailError').innerText = 'Email cannot be empty';
         document.getElementById('email').classList.add('error');
     }
+
     if (message === '') {
         isValid = false;
         document.getElementById('messageError').innerText = 'Message cannot be empty';
         document.getElementById('message').classList.add('error');
     }
+
+    // Submit the form if valid
     if (isValid) {
         this.submit();
     }
 });
+
+// Function to reset error messages and styles
 function resetErrors() {
     var errorMessages = document.getElementsByClassName('error-message');
     for (var i = 0; i < errorMessages.length; i++) {
