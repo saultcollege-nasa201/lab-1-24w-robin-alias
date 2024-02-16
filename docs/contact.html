@@ -9,6 +9,7 @@
         .error {
             border: 1px solid red;
         }
+
         .error-message {
             color: red;
         }
@@ -42,42 +43,6 @@
     <footer>
         <p>&copy; 2024 Robin Alias (23052990). All rights reserved.</p>
     </footer>
-<script>
-    document.getElementById('contactForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        var name = document.getElementById('name').value.trim();
-        var email = document.getElementById('email').value.trim();
-        var message = document.getElementById('message').value.trim();
-        var errorMessages = document.getElementById('errorMessages');
-        var isValid = true;
-        errorMessages.innerHTML = '';
-        var specialChars = /^[a-zA-Z0-9]*$/;
-        if (name === '') {
-            displayErrorMessage('Name is required.');
-            isValid = false;
-        } else if (/\d/.test(name)) {
-            displayErrorMessage('Name cannot contain numbers.');
-            isValid = false;
-        }else if (!specialChars.test(name)) {
-            displayErrorMessage('Name cannot contain special characters.');
-            isValid = false;}
-        if (message === '') {
-            displayErrorMessage('Message is required.');
-            isValid = false;
-        }if (email === '') {
-            displayErrorMessage('Email is required.');
-            isValid = false;
-        }
-        if (isValid) {
-            event.target.submit();
-        }
-    });
-    function displayErrorMessage(message) {
-        var errorMessages = document.getElementById('errorMessages');
-        var errorMessageNode = document.createElement('p');
-        errorMessageNode.textContent = message;
-        errorMessages.appendChild(errorMessageNode);
-    }
-</script>
+    <script src="script.js"></script>
 </body>
 </html>
