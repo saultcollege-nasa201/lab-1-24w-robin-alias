@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .error {
+            border: 1px solid red;
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -29,6 +38,7 @@
                 <span id="emailError" class="error-message"></span><br>
                 <label for="message">Message:</label><br>
                 <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
+                <span id="messageError" class="error-message"></span><br>
                 <input type="submit" value="Submit">
             </form>
         </section>
@@ -36,7 +46,6 @@
     <footer>
         <p>&copy; 2024 Robin Alias (23052990). All rights reserved.</p>
     </footer>
-
     <script src="formValidation.js"></script>
 </body>
 </html>
