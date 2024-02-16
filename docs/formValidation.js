@@ -3,6 +3,7 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     resetErrors();
     var name = document.getElementById('name').value.trim();
     var email = document.getElementById('email').value.trim();
+    var message = document.getElementById('message').value.trim();
     var isValid = true;
     if (name === '') {
         isValid = false;
@@ -18,8 +19,11 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         document.getElementById('emailError').innerText = 'Email cannot be empty';
         document.getElementById('email').classList.add('error');
     }
-
-    // Submit the form if valid
+    if (message === '') {
+        isValid = false;
+        document.getElementById('messageError').innerText = 'Message cannot be empty';
+        document.getElementById('message').classList.add('error');
+    }
     if (isValid) {
         this.submit();
     }
@@ -34,4 +38,8 @@ function resetErrors() {
     for (var i = 0; i < inputs.length; i++) {
         inputs[i].classList.remove('error');
     }
+
+    var textarea = document.getElementsByTagName('textarea')[0];
+    textarea.classList.remove('error');
+    document.getElementById('messageError').innerText = '';
 }
